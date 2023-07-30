@@ -20,7 +20,7 @@
 
             <DataGrid ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem, 
                 UpdateSourceTrigger=PropertyChanged}"
-                      CanUserAddRows="False" CanUserDeleteRows="False" >
+                      CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="4*"/>
                     <DataGridTextColumn Header="Serial Number" Binding="{Binding SerialNumber}" Width="4*"/>
