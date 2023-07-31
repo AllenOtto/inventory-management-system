@@ -11,6 +11,8 @@ namespace MVVMTutorial.ViewModel
         public RelayCommand AddCommand => new RelayCommand(execute => AddItem(), canExecute => { return true; });
         public RelayCommand DeleteCommand => new RelayCommand(execute => DeleteItem(), canExecute => selectedItem != null);
 
+        public RelayCommand SaveCommand => new RelayCommand(execute => Save(), canExecute => CanSave());
+
         public MainWindowViewModel()
         {
             Items = new ObservableCollection<Item>();
@@ -39,6 +41,22 @@ namespace MVVMTutorial.ViewModel
         private void DeleteItem()
         {
             Items.Remove(selectedItem);
+        }
+
+        // We won't implement a full save here because we're not implementing a database
+        // Save to file/db functionality goes here
+
+        private void Save()
+        {
+            // Save functionality 
+        }
+
+        // CanSave() here could mean: "Is the database connected?",
+        // "Does the logged in user have the requisite permissions to save said item?" etc depending on your application and needs
+
+        private bool CanSave() 
+        {
+            return true;
         }
     }
 }
