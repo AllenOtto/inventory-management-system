@@ -9,6 +9,7 @@ namespace MVVMTutorial.ViewModel
         public ObservableCollection<Item> Items { get; set; }
 
         public RelayCommand AddCommand => new RelayCommand(execute => AddItem(), canExecute => { return true; });
+        public RelayCommand DeleteCommand => new RelayCommand(execute => DeleteItem(), canExecute => selectedItem != null);
 
         public MainWindowViewModel()
         {
@@ -33,6 +34,11 @@ namespace MVVMTutorial.ViewModel
                 SerialNumber="xxx9xx",
                 Quantity=4
             });
+        }
+
+        private void DeleteItem()
+        {
+            Items.Remove(selectedItem);
         }
     }
 }
