@@ -7,30 +7,12 @@ namespace MVVMTutorial.ViewModel
     internal class MainWindowViewModel : ViewModelBase
     {
         public ObservableCollection<Item> Items { get; set; }
+
+        public RelayCommand AddCommand => new RelayCommand(execute => AddItem(), canExecute => { return true; });
+
         public MainWindowViewModel()
         {
             Items = new ObservableCollection<Item>();
-
-            Items.Add(new Item
-            {
-                Name="Black Oxfords",
-                SerialNumber="01984",
-                Quantity=4
-            });
-
-            Items.Add(new Item
-            {
-                Name="Hublot 007",
-                SerialNumber="01987",
-                Quantity=2
-            });
-
-            Items.Add(new Item
-            {
-                Name="Designer Suit",
-                SerialNumber="01989",
-                Quantity=7
-            });
         }
 
         private Item selectedItem;
@@ -41,6 +23,16 @@ namespace MVVMTutorial.ViewModel
                 selectedItem = value;
                 OnPropertyChanged();
             }
+        }
+
+        private void AddItem()
+        {
+            Items.Add(new Item
+            {
+                Name="New Boot",
+                SerialNumber="xxx9xx",
+                Quantity=4
+            });
         }
     }
 }
